@@ -20,10 +20,28 @@ class MyProduct extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Image.network(
-            product.thumbnail,
+          SizedBox(
             height: 200,
-            fit: BoxFit.cover,
+            child: Stack(
+              children: [
+                Positioned.fill(
+                  child: Image.network(
+                    product.thumbnail,
+                    height: 200,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                Positioned(
+                  bottom: 0,
+                  right: 0,
+                  child: Container(
+                    color: Colors.white,
+                    padding: const EdgeInsets.all(8),
+                    child: Text('\$${product.price.toStringAsFixed(2)}'),
+                  ),
+                ),
+              ],
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(16),

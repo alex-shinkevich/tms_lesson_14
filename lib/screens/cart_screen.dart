@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:lesson_14/state/cart_state.dart';
+import 'package:provider/provider.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final cart = CartState.of(context).cart;
+    // final cart = CartState.of(context).cart;
+    final cart = context.watch<CartCubit>().state;
 
     return Scaffold(
       appBar: AppBar(title: const Text('Cart')),
